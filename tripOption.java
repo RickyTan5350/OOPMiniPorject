@@ -1,20 +1,11 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
-public class tripOption {
-    private String tripName;
-    private String placeName;
-    private double cost;
+public class TripOption {
+    private double budget;
     private double duration;
-    private ArrayList<Trip> tripList;
-
-    // Constructor
-    public tripOption(String tripName, String placeName, double cost, double duration) {
-        this.tripName = tripName;
-        this.cost = cost;
-        this.place = placeName;
-        this.duration = duration;
-        this.tripList = new ArrayList<>();
-    }
+    private String state;
+    private ArrayList<Trip> tripList = new ArrayList<>();
 
     public void addTrip(Trip trip) {
         tripList.add(trip);
@@ -24,27 +15,40 @@ public class tripOption {
         tripList.remove(trip);
     }
 
-    public String getTripName() {
-        return tripName;
+    public void setBudget() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter budget: ");
+        this.budget = sc.nextDouble();
     }
 
-    public double getCost() {
-        return cost;
+    public void setState() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter state: ");
+        this.state = sc.nextLine();
     }
 
-    public String getPlace(){
-        return placeName;
+    public void setDuration() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter duration (days): ");
+        this.duration = sc.nextDouble();
+    }
+
+    public void displayAllTrips() {
+        for (Trip trip : tripList) {
+            System.out.println(trip.getTripDetails());
+        }
+    }
+
+    public ArrayList<Trip> getTripList() {
+        return tripList;
+    }
+
+    public double getBudget() {
+        return budget;
     }
 
     public double getDuration() {
         return duration;
     }
-
-    // Optional: display all trips
-    public void displayAllTrips() {
-        System.out.println("Trips available : ");
-        for (Trip t : tripList) {
-            System.out.println(t);
-        }
-    }
 }
+

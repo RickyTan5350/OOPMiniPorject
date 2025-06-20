@@ -1,9 +1,7 @@
 class Wishlist {
     private List<Trip> wishList = new ArrayList<>();
 
-    public void addWishlist(Trip t) {
-        wishList.add(t);
-    }
+
 
     public void deleteWishlist(Trip t) {
         wishList.remove(t);

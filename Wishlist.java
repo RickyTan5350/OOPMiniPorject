@@ -1,8 +1,6 @@
 class Wishlist {
     private List<Trip> wishList = new ArrayList<>();
 
-
-
     public void deleteWishlist(Trip t) {
         wishList.remove(t);
     }

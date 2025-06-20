@@ -16,23 +16,5 @@ abstract class Trip {
 
     public abstract String getTripDetails();
 
-    public String getLocation() {
-        return location;
-    }
-
-    public double getDuration() {
-        return duration;
-    }
-
-    public double getCost() {
-        return cost;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getTripName() {
-        return tripName;
-    }
+    
 }

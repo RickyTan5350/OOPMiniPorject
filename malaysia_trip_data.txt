@@ -1,0 +1,60 @@
+Kampung Cultural Immersion,Kampung Baru,Kuala Lumpur,1,50,Traditional village walk with local food tasting.
+Butterfly & Reptile Encounter,Teluk Bahang,Penang,1,40,Nature park with butterflies and reptiles.
+Heritage Walk Tour,Jonker Street,Melaka,1,70,Local crafts colonial landmarks & street art.
+Mural Art Hunt,Ipoh,Perak,1,30,Search through the city for iconic street murals.
+Public Transport Challenge,Klang Valley,Selangor,1,20,Tour city using MRT LRT & KTM.
+Bukit Broga Hike,Semenyih,Selangor,1,15,Sunrise hike with scenic mountain views.
+Penang Food Trail,George Town,Penang,1,80,Street food sampling from hawker stalls.
+Museum Marathon,Kuching,Sarawak,1,40,Visit 3 key museums in one day.
+Wet Market Discovery,Alor Setar,Kedah,1,20,Early morning market shopping with locals.
+Mini Zoo Visit,Ayer Keroh,Melaka,1,40,Petting zoo with reptiles and exotic animals.
+Street Photography Outing,Petaling Street,Kuala Lumpur,1,0,Self-guided tour capturing culture.
+Mangrove Kayaking,Kuala Sepetang,Perak,1,90,Paddle through coastal mangrove forests.
+Rock Art Exploration,Gua Tambun,Perak,1,30,Prehistoric rock paintings hike.
+Tropical Fruit Farm Tour,Balik Pulau,Penang,1,60,Orchard tour and fruit tasting.
+Traditional Game Day,Kota Bharu,Kelantan,1,20,Play congkak gasing batu seremban.
+Fishing Village Visit,Kukup,Johor,1,80,Wooden boardwalks & seafood meals.
+Historical Fort Walk,Fort Cornwallis,Penang,1,50,Colonial-era fort and heritage insight.
+Waterfall Picnic,Sungai Pandan,Pahang,1,30,Swim and picnic by jungle waterfalls.
+Urban Sketching Trail,Taman Tasik Titiwangsa,Kuala Lumpur,1,0,Drawing and leisure around lake garden.
+Firefly River Cruise,Kampung Kuantan,Selangor,1,100,Watch magical fireflies by boat at night.
+Rainforest Glamping Experience,Janda Baik,Pahang,2,1000,Luxury tent in rainforest setting.
+Island Diving Starter,Tioman Island,Pahang,2,1500,Learn-to-dive + 2 guided reef dives.
+Highland Eco Retreat,Kundasang,Sabah,2,1200,Stay near Mount Kinabalu with farm visits.
+Adventure Combo,Gopeng,Perak,2,900,White-water rafting caving & zipline.
+Heritage Homestay Program,Kuala Pilah,Negeri Sembilan,2,700,Traditional house stay with activities.
+River Tubing Weekend,Ulu Slim,Perak,2,800,River tubing jungle food and BBQ.
+Photography Safari,Tasik Bera,Pahang,2,950,Nature & wildlife photography in wetlands.
+City & Sky Package,KL Tower & Petronas,Kuala Lumpur,1,600,Premium access to towers + dining voucher.
+Rainforest Night Trek,Taman Negara,Pahang,2,750,Guided night trek & canopy walk.
+Island Chill & Paddle,Pangkor Island,Perak,2,850,Kayaking snorkeling and island hopping.
+Farm-to-Table Tour,Cameron Highlands,Pahang,2,1000,Tea strawberries hydroponics.
+Sarawak River Cruise + Market,Kuching,Sarawak,1,700,Boat ride + Sarawak Laksa and souvenirs.
+Forest Adventure Camp,Hulu Langat,Selangor,2,950,Zipline obstacle course & nature trail.
+Batik Workshop & Culture Tour,Kota Bharu,Kelantan,1,600,Arts culture and market shopping.
+Seafood Feast Trip,Kuala Perlis,Perlis,1,650,Market walk + seafood buffet by the pier.
+Water Chalet Stay,Port Dickson,Negeri Sembilan,2,1100,Sea villa with sunset views and amenities.
+Horse Riding Ranch Tour,Langkawi,Kedah,1,550,Scenic horse trail and mini zoo.
+Island Bike Tour,Pulau Pangkor,Perak,1,800,Cycling across fishing villages and beaches.
+Urbanscape Design Hunt,Putrajaya,Putrajaya,1,550,Explore mosques bridges and green parks.
+Cooking Class & Market Tour,Penang Island,Penang,1,600,Learn to cook Nasi Kandar from locals.
+Sky Dining Experience,KL Tower,Kuala Lumpur,1,2200,3-course meal with panoramic tower views.
+Private Yacht Tour,Marina Island,Perak,1,2500,Luxury yacht charter around Pangkor.
+Helicopter Excursion,Kota Kinabalu,Sabah,1,3000,Scenic heli-tour over coasts and mountains.
+5-Star Island Resort Stay,Langkawi,Kedah,3,3500,Private villa with personal butler.
+Luxury Jungle Lodge,Danum Valley,Sabah,3,4000,Premium lodge in ancient rainforest.
+Spa & Golf Retreat,Awana Genting,Pahang,2,2300,Golf package and spa in highlands.
+Romantic Cruise Package,Putrajaya,Putrajaya,1,2100,Candlelit dinner on lake cruise boat.
+Wellness Detox Retreat,Janda Baik,Pahang,3,2800,Guided cleanse yoga & forest retreat.
+Cultural Immersion Luxe,Sarawak Cultural Village,Sarawak,2,2500,Culture dance & luxury villa stay.
+Glacier Bay Inspired Ice Dome,Genting SkyWorlds,Pahang,1,2200,Ice dome VIP access with backstage pass.
+Private Island Rental,Rawa Island,Johor,2,5000,Rent entire beachfront chalet for family.
+Luxury Cave Stay,Mulu Caves,Sarawak,2,3000,Guided caving & cliffside boutique rooms.
+Jet Ski Expedition,Pantai Cenang,Kedah,1,2700,Full-day island-hopping via jet ski.
+Forest Reserve Eco-Luxury,Belum Rainforest Resort,Perak,2,2600,Nature meets high-end accommodation.
+5D4N Dive & Dine,Sipadan Island,Sabah,5,4500,Exclusive reef diving and gourmet meals.
+Hilltop Estate Retreat,Bukit Tinggi,Pahang,2,2100,French-themed estate & fine dining.
+Luxury Train Experience,ETS Gold VIP,Peninsular Malaysia,1,2500,Scenic ride with gourmet cabin meals.
+Treetop Skywalk Premium,FRIM,Selangor,1,2100,Private canopy walk + guide and meal package.
+Water Villa Escape,Redang Island,Terengganu,3,3800,Overwater villa with sea-to-sky views.
+Luxury Wildlife Encounter,Kinabatangan River,Sabah,2,3000,River cruise with wildlife expert guide.

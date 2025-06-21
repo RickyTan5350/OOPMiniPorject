@@ -17,7 +17,7 @@ abstract class Trip {
         this.description = description;
     }
 
-    public abstract String getTripDetails();
+    public abstract void getTripDetails();
 }
 
 class BudgetTrip extends Trip {
@@ -25,8 +25,9 @@ class BudgetTrip extends Trip {
         super(tripName, location, duration, cost, description);
     }
 
-    public String getTripDetails() {
-        return "[Budget] " + tripName + " at " + location + ",  " + duration + " days";
+    public void getTripDetails() {
+        System.out.printf("[Budget] %-35s at %-40s, %2d days, RM%7.2f", tripName, location, duration, cost);
+
     }
 }
 
@@ -35,8 +36,9 @@ class StandardTrip extends Trip {
         super(tripName, location, duration, cost, description);
     }
 
-    public String getTripDetails() {
-        return "[Standard] " + tripName + " at " + location + ",  " + duration + " days";
+    public void getTripDetails() {
+        System.out.printf("[Standard] %-35s at %-40s, %2d days, RM%7.2f", tripName, location, duration, cost);
+
     }
 }
 
@@ -45,8 +47,9 @@ class PremiumTrip extends Trip {
         super(tripName, location, duration, cost, description);
     }
 
-    public String getTripDetails() {
-        return "[Premium] " + tripName + " at " + location + ",  " + duration + " days";
+    public void getTripDetails() {
+        System.out.printf("[Premium] %-35s at %-40s, %2d days, RM%7.2f", tripName, location, duration, cost);
+
     }
 }
 
@@ -127,7 +130,8 @@ class TripOption {
                     }
 
                     if (tempTrip != null) {
-                        System.out.println(tempTrip.getTripDetails());
+                        tempTrip.getTripDetails();
+                        System.out.println();
                     }
                 }
             }
@@ -139,14 +143,17 @@ class TripOption {
 
     private String getTripTypeName(String tripType) {
         switch (tripType) {
-            case "1": return "Budget";
-            case "2": return "Standard";
-            case "3": return "Premium";
-            default: return "Unknown";
+            case "1":
+                return "Budget";
+            case "2":
+                return "Standard";
+            case "3":
+                return "Premium";
+            default:
+                return "Unknown";
         }
     }
 }
-
 
 class TripRecommendation {
     public static void recommendAndSortByBudget(ArrayList<Trip> trips, double budget) {
@@ -165,7 +172,8 @@ class TripRecommendation {
         filtered.sort((a, b) -> Double.compare(a.cost, b.cost));
         System.out.println("\n=== Trips Within Budget (Lowest to Highest) ===");
         for (Trip t : filtered) {
-            System.out.println(t.getTripDetails() + " - RM" + t.cost);
+            t.getTripDetails();
+            System.out.println();
         }
     }
 
@@ -185,7 +193,8 @@ class TripRecommendation {
         filtered.sort((a, b) -> Integer.compare(a.duration, b.duration));
         System.out.println("\n=== Trips Within Duration (Shortest to Longest) ===");
         for (Trip t : filtered) {
-            System.out.println(t.getTripDetails() + " - " + t.duration + " days");
+            t.getTripDetails();
+            System.out.println();
         }
     }
 }
@@ -196,7 +205,9 @@ class Wishlist {
     public void addToWishlist(Trip t) {
         if (!wishList.contains(t)) {
             wishList.add(t);
-            System.out.println("Trip added to wishlist: " + t.getTripDetails());
+            System.out.println("Trip added to wishlist: ");
+            t.getTripDetails();
+            System.out.println();
         } else {
             System.out.println("Trip already in wishlist.");
         }
@@ -205,7 +216,9 @@ class Wishlist {
     public void deleteWishlist(int index) {
         if (index >= 0 && index < wishList.size()) {
             Trip removed = wishList.remove(index);
-            System.out.println("Removed: " + removed.getTripDetails());
+            System.out.println("Removed: ");
+            removed.getTripDetails();
+            System.out.println();
         } else {
             System.out.println("Invalid index.");
         }
@@ -217,7 +230,8 @@ class Wishlist {
         } else {
             System.out.println("\n=== Your Wishlist ===");
             for (int i = 0; i < wishList.size(); i++) {
-                System.out.println((i + 1) + ". " + wishList.get(i).getTripDetails());
+                System.out.printf("%2d .", (i + 1));
+                wishList.get(i).getTripDetails();
             }
         }
     }
@@ -230,7 +244,9 @@ class Wishlist {
         return wishList.size();
     }
 }
-// ... (previous Trip, BudgetTrip, StandardTrip, PremiumTrip, TripOption, TripRecommendation, Wishlist classes stay the same)
+
+// ... (previous Trip, BudgetTrip, StandardTrip, PremiumTrip, TripOption,
+// TripRecommendation, Wishlist classes stay the same)
 public class TripPlanner {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -265,6 +281,7 @@ public class TripPlanner {
                                 break;
                             case "2":
                                 wishlist.displayWishlist();
+                                System.out.println();
                                 if (!wishlist.isEmpty()) {
                                     System.out.print("Enter trip number to remove: ");
                                     int removeIndex = sc.nextInt();
@@ -306,7 +323,8 @@ public class TripPlanner {
                         if (!tripOption.getTripList().isEmpty()) {
                             System.out.println("\n=== Trips in " + state + " ===");
                             for (Trip t : tripOption.getTripList()) {
-                                System.out.println(t.getTripDetails());
+                                t.getTripDetails();
+                                System.out.println();
                             }
 
                             boolean filterMenu = true;
@@ -330,14 +348,17 @@ public class TripPlanner {
                                         System.out.print("Enter max duration (in days): ");
                                         int duration = sc.nextInt();
                                         sc.nextLine();
-                                        TripRecommendation.recommendAndSortByDuration(tripOption.getTripList(), duration);
+                                        TripRecommendation.recommendAndSortByDuration(tripOption.getTripList(),
+                                                duration);
                                         break;
                                     case "3":
                                         ArrayList<Trip> filteredTrips = tripOption.getTripList();
                                         if (!filteredTrips.isEmpty()) {
                                             System.out.println("\nChoose a trip to add (enter number):");
                                             for (int i = 0; i < filteredTrips.size(); i++) {
-                                                System.out.println((i + 1) + ". " + filteredTrips.get(i).getTripDetails());
+                                                System.out.printf("%2d .", (i + 1));
+                                                filteredTrips.get(i).getTripDetails();
+                                                System.out.println();
                                             }
                                             System.out.print("Enter trip number: ");
                                             int index = sc.nextInt();
@@ -380,7 +401,8 @@ public class TripPlanner {
                                     } else if (typeChoice.equals("3") && cost > 2000) {
                                         tempTrip = new PremiumTrip(tripName, location, duration, cost, desc);
                                     }
-                                    if (tempTrip != null) currentTrips.add(tempTrip);
+                                    if (tempTrip != null)
+                                        currentTrips.add(tempTrip);
                                 }
                             }
                         } catch (IOException e) {
@@ -390,7 +412,9 @@ public class TripPlanner {
                         if (!currentTrips.isEmpty()) {
                             System.out.println("\nChoose a trip to add (enter number):");
                             for (int i = 0; i < currentTrips.size(); i++) {
-                                System.out.println((i + 1) + ". " + currentTrips.get(i).getTripDetails());
+                                System.out.printf("%2d .", (i + 1));
+                                currentTrips.get(i).getTripDetails();
+                                System.out.println();
                             }
                             System.out.print("Enter trip number: ");
                             int pick = sc.nextInt();
@@ -405,6 +429,11 @@ public class TripPlanner {
                         }
                         break; // exit to main menu after adding
                     }
+
+                    else {
+                        System.out.println("Invalid choice!!!Returning to main menu");
+                        break;
+                    }
                     break;
 
                 case "3":
@@ -417,4 +446,5 @@ public class TripPlanner {
         sc.close();
     }
 }
+
 

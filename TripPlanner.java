@@ -2,53 +2,99 @@ import java.util.ArrayList;
 import java.io.*;
 import java.util.Scanner;
 
-abstract class Trip {
-    protected String tripName;
-    protected String location;
-    protected int duration;
-    protected double cost;
-    protected String description;
+class Location {
+    private String place;
+    private String state;
 
-    public Trip(String tripName, String location, int duration, double cost, String description) {
+    Location(String p, String s) {
+        this.place = p;
+        this.state = s;
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public String toString() {
+        return place + ", " + state;
+    }
+}
+
+abstract class Trip {
+    private String tripName;
+    private Location location;
+    private int duration;
+    private double cost;
+    private String description;
+
+    public Trip(String tripName, String place, String state, int duration, double cost, String description) {
         this.tripName = tripName;
-        this.location = location;
+        this.location = new Location(place, state);
         this.duration = duration;
         this.cost = cost;
         this.description = description;
     }
 
     public abstract void getTripDetails();
+
+    public String getTripName() {
+        return tripName;
+    }
+
+    public String getLocation() {
+        return location.toString();
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public double getCost() {
+        return cost;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }
 
 class BudgetTrip extends Trip {
-    public BudgetTrip(String tripName, String location, int duration, double cost, String description) {
-        super(tripName, location, duration, cost, description);
+    public BudgetTrip(String tripName, String place, String state, int duration, double cost, String description) {
+        super(tripName, place, state, duration, cost, description);
     }
 
     public void getTripDetails() {
-        System.out.printf("[Budget] %-35s at %-40s, %2d days, RM%7.2f", tripName, location, duration, cost);
+        System.out.printf("%-10s %-35s %-40s, %2d days, RM%7.2f", "[Budget]", super.getTripName(), super.getLocation(),
+                super.getDuration(), super.getCost());
 
     }
 }
 
 class StandardTrip extends Trip {
-    public StandardTrip(String tripName, String location, int duration, double cost, String description) {
-        super(tripName, location, duration, cost, description);
+    public StandardTrip(String tripName, String place, String state, int duration, double cost, String description) {
+        super(tripName, place, state, duration, cost, description);
     }
 
     public void getTripDetails() {
-        System.out.printf("[Standard] %-35s at %-40s, %2d days, RM%7.2f", tripName, location, duration, cost);
+        System.out.printf("%-10s %-35s %-40s, %2d days, RM%7.2f", "[Standard]", super.getTripName(),
+                super.getLocation(),
+                super.getDuration(), super.getCost());
 
     }
 }
 
 class PremiumTrip extends Trip {
-    public PremiumTrip(String tripName, String location, int duration, double cost, String description) {
-        super(tripName, location, duration, cost, description);
+    public PremiumTrip(String tripName, String place, String state, int duration, double cost, String description) {
+        super(tripName, place, state, duration, cost, description);
     }
 
     public void getTripDetails() {
-        System.out.printf("[Premium] %-35s at %-40s, %2d days, RM%7.2f", tripName, location, duration, cost);
+        System.out.printf("%-10s %-35s %-40s, %2d days, RM%7.2f", "[Premium]", super.getTripName(), super.getLocation(),
+                super.getDuration(), super.getCost());
 
     }
 }
@@ -71,16 +117,15 @@ class TripOption {
                     int duration = Integer.parseInt(data[3]);
                     double cost = Double.parseDouble(data[4]);
                     String description = data[5];
-                    String location = city + ", " + state;
 
                     if (state.equalsIgnoreCase(inputState)) {
                         Trip trip = null;
                         if (tripType.equals("1") && cost <= 500) {
-                            trip = new BudgetTrip(tripName, location, duration, cost, description);
+                            trip = new BudgetTrip(tripName, city, state, duration, cost, description);
                         } else if (tripType.equals("2") && cost > 500 && cost <= 2000) {
-                            trip = new StandardTrip(tripName, location, duration, cost, description);
+                            trip = new StandardTrip(tripName, city, state, duration, cost, description);
                         } else if (tripType.equals("3") && cost > 2000) {
-                            trip = new PremiumTrip(tripName, location, duration, cost, description);
+                            trip = new PremiumTrip(tripName, city, state, duration, cost, description);
                         }
 
                         if (trip != null) {
@@ -115,18 +160,19 @@ class TripOption {
 
                 if (data.length == 6) {
                     String tripName = data[0];
-                    String location = data[1] + ", " + data[2];
+                    String city = data[1];
+                    String state = data[2];
                     int duration = Integer.parseInt(data[3]);
                     double cost = Double.parseDouble(data[4]);
                     String description = data[5];
 
                     Trip tempTrip = null;
                     if (tripType.equals("1") && cost <= 500) {
-                        tempTrip = new BudgetTrip(tripName, location, duration, cost, description);
+                        tempTrip = new BudgetTrip(tripName, city, state, duration, cost, description);
                     } else if (tripType.equals("2") && cost > 500 && cost <= 2000) {
-                        tempTrip = new StandardTrip(tripName, location, duration, cost, description);
+                        tempTrip = new StandardTrip(tripName, city, state, duration, cost, description);
                     } else if (tripType.equals("3") && cost > 2000) {
-                        tempTrip = new PremiumTrip(tripName, location, duration, cost, description);
+                        tempTrip = new PremiumTrip(tripName, city, state, duration, cost, description);
                     }
 
                     if (tempTrip != null) {
@@ -159,7 +205,7 @@ class TripRecommendation {
     public static void recommendAndSortByBudget(ArrayList<Trip> trips, double budget) {
         ArrayList<Trip> filtered = new ArrayList<>();
         for (Trip t : trips) {
-            if (t.cost <= budget) {
+            if (t.getCost() <= budget) {
                 filtered.add(t);
             }
         }
@@ -169,7 +215,7 @@ class TripRecommendation {
             return;
         }
 
-        filtered.sort((a, b) -> Double.compare(a.cost, b.cost));
+        filtered.sort((a, b) -> Double.compare(a.getCost(), b.getCost()));
         System.out.println("\n=== Trips Within Budget (Lowest to Highest) ===");
         for (Trip t : filtered) {
             t.getTripDetails();
@@ -180,7 +226,7 @@ class TripRecommendation {
     public static void recommendAndSortByDuration(ArrayList<Trip> trips, int duration) {
         ArrayList<Trip> filtered = new ArrayList<>();
         for (Trip t : trips) {
-            if (t.duration <= duration) {
+            if (t.getDuration() <= duration) {
                 filtered.add(t);
             }
         }
@@ -190,7 +236,7 @@ class TripRecommendation {
             return;
         }
 
-        filtered.sort((a, b) -> Integer.compare(a.duration, b.duration));
+        filtered.sort((a, b) -> Integer.compare(a.getDuration(), b.getDuration()));
         System.out.println("\n=== Trips Within Duration (Shortest to Longest) ===");
         for (Trip t : filtered) {
             t.getTripDetails();
@@ -232,6 +278,8 @@ class Wishlist {
             for (int i = 0; i < wishList.size(); i++) {
                 System.out.printf("%2d .", (i + 1));
                 wishList.get(i).getTripDetails();
+                System.out.println();
+
             }
         }
     }
@@ -388,18 +436,19 @@ public class TripPlanner {
                                 String[] parts = reader.nextLine().split(",", 6);
                                 if (parts.length == 6) {
                                     String tripName = parts[0];
-                                    String location = parts[1] + ", " + parts[2];
+                                    String city = parts[1];
+                                    String state = parts[2];
                                     int duration = Integer.parseInt(parts[3]);
                                     double cost = Double.parseDouble(parts[4]);
                                     String desc = parts[5];
 
                                     Trip tempTrip = null;
                                     if (typeChoice.equals("1") && cost <= 500) {
-                                        tempTrip = new BudgetTrip(tripName, location, duration, cost, desc);
+                                        tempTrip = new BudgetTrip(tripName, city, state, duration, cost, desc);
                                     } else if (typeChoice.equals("2") && cost > 500 && cost <= 2000) {
-                                        tempTrip = new StandardTrip(tripName, location, duration, cost, desc);
+                                        tempTrip = new StandardTrip(tripName, city, state, duration, cost, desc);
                                     } else if (typeChoice.equals("3") && cost > 2000) {
-                                        tempTrip = new PremiumTrip(tripName, location, duration, cost, desc);
+                                        tempTrip = new PremiumTrip(tripName, city, state, duration, cost, desc);
                                     }
                                     if (tempTrip != null)
                                         currentTrips.add(tempTrip);
